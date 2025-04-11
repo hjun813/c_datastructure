@@ -88,9 +88,36 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
-int insertSortedLL(LinkedList *ll, int item)
+int insertSortedLL(LinkedList *ll, int item) // 연결리스트 주소값과 넣을 item
 {
 	/* add your code here */
+	// 중복된 값을 넣으려면 -1을 리턴해야하고
+	// 값을 넣을 수 있으면 넣은 곳의 인덱스를 리턴해라
+	ListNode *cur = ll->head;
+	int i = 0;
+
+	if(cur == NULL){
+		insertNode(ll, 0, item);
+		return 0;
+	}
+
+	while (cur != NULL)
+	{
+		if(cur->item == item){
+			return -1;
+		}
+		else if (cur->item > item)
+		{
+			insertNode(ll, i, item);
+			return i;
+		}
+		cur = cur->next;
+		i++;
+		
+	}
+	insertNode(ll, i, item);
+	return i;		
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
