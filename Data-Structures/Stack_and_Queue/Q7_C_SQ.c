@@ -105,6 +105,54 @@ int main()
 int balanced(char *expression)
 {
 /* add your code here */
+	Stack temp;
+	temp.ll.head = NULL;
+	temp.ll.size = 0;
+	char check = 'a';
+	int i = 0;
+	while(check != '\0'){
+		check = *(expression+i);
+		if(check == ']'){ 
+			if(peek(&temp) == 1){
+				pop(&temp);
+			}
+			else{
+				return 1;
+			}
+		}
+		else if(check == ')'){ 
+			if(peek(&temp) == 3){
+				pop(&temp);
+			}
+			else{
+				return 1;
+			}
+		}
+		else if(check == '}'){ 
+			if(peek(&temp) == 2){
+				pop(&temp);
+			}
+			else{
+				return 1;
+			}
+		}
+		else if(check == '['){ 
+			push(&temp, 1);
+		}
+		else if(check == '('){ 
+			push(&temp, 3);
+		}
+		else if(check == '{'){ 
+			push(&temp, 2);
+		}
+		i++;
+
+	}
+	if(temp.ll.size > 0){
+		return 1;
+	}
+	return 0;
+
 }
 
 ////////////////////////////////////////////////////////////
