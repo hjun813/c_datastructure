@@ -89,8 +89,32 @@ int main()
 int moveMaxToFront(ListNode **ptrHead) //&(ll.head), 반환을 뭘 하길래 int임?
 {
     /* add your code here */
-	// printf("%d", **ptrHead.item);
+	ListNode *cur = *ptrHead;
+	ListNode *curbef = NULL;
+	ListNode *maxNode = cur;
+	ListNode *maxNodebef = NULL;  
+	
+	while (cur != NULL)
+	{
+		if (maxNode->item < cur->item){
+			maxNode = cur;
+			maxNodebef = curbef;
+		}
+		curbef = cur;
+		cur = cur->next;
+	}
+	
+	if(maxNode->next == NULL){
+		maxNodebef->next = NULL;
+	}
+	else{
+		maxNodebef->next = maxNode->next;
+	}
 
+	maxNode->next = *ptrHead;
+	*ptrHead = maxNode;
+
+	return 0;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
