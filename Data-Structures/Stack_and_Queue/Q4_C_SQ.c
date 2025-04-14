@@ -116,7 +116,7 @@ void reverse(Queue *q)
 	Stack temp;
 	temp.ll.head = NULL;
 	temp.ll.size = 0;
-	temp.ll.tail = 0;
+	temp.ll.tail = NULL;
 	int k=0, g=0;
 
 

@@ -103,6 +103,27 @@ int main()
 int smallestValue(BTNode *node)
 {
 	/* add your code here */
+    // node 루트 트리에서 최솟값을 리턴 하니까
+    // 루트, 왼, 오 비교해서 최솟값 리턴하기
+    int temp = 0;
+    if(node == NULL){
+        return 999999;
+    }
+    int leftMin = smallestValue(node->left);
+    int rightMin = smallestValue(node->right);
+    if(leftMin <= rightMin){
+        temp = leftMin;
+    }
+    else{
+        temp = rightMin;
+    }
+    if(temp <= node->item){
+        return temp;
+    }
+    else{
+        return node->item;
+    }
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////

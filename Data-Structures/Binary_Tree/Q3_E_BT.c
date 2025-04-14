@@ -102,6 +102,25 @@ int countOneChildNodes(BTNode *node)
 
 {
     /* add your code here */
+    // 리턴 값이 노드값을 루트로 하는 트리에서 자식 1명인 개수 반환
+    // 그니까 자식 1명인 노드를 찾아서 개수 반환해라
+    // 그럼 재귀로 자식 별로 재귀 돌리고
+    // 자식이 1명이면 1 더해주고
+    // 자식이 2명이면 그냥 넘기고
+    
+    if (node == NULL){
+        return 0;
+    }
+    if(node->left != NULL && node->right != NULL){ // 자식이 2명
+        return countOneChildNodes(node->left) + countOneChildNodes(node->right); 
+    }
+    else if(node->left != NULL || node->right != NULL){ // 자식이 1명
+        return countOneChildNodes(node->left) + countOneChildNodes(node->right) + 1;
+    }
+    else{
+        return 0;
+    }
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
