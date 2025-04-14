@@ -103,6 +103,30 @@ int main()
 int hasGreatGrandchild(BTNode *node)
 {
 	/* add your code here */
+    // 부모 > 자식 > 손자 > 증손자 (증손자 있는 부모 출력)
+    // 재귀 돌릴꺼고
+    // 깊이 3만큼 탐색하고 왼쪽, 오른쪽 재귀 돌릴껀데
+    // 깊이를 리턴 시켜야 하나
+    // 
+    if(node == NULL){
+        return 0;
+    }
+    int leftDepth = hasGreatGrandchild(node->left);
+    int rightDepth = hasGreatGrandchild(node->right);
+
+    if (leftDepth >= 3 || rightDepth >= 3 ){
+        printf("%d ", node->item);
+    }
+
+    leftDepth++;
+    rightDepth++;
+
+    if(leftDepth <= rightDepth){
+        return rightDepth;
+    }else{
+        return leftDepth;
+    }
+    
 }
 
 //////////////////////////////////////////////////////////////////////////////////

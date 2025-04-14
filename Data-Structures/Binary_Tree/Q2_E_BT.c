@@ -98,6 +98,25 @@ int maxHeight(BTNode *node)
 
 {
     /* add your code here */
+    // 리턴은 아마 깊이를 해줘야 할거고
+    // 재귀를 돌려야 하나?
+    // 오른쪽 재귀와 왼쪽 재귀를 비교 하여 큰 값에 1을 더하자!!
+    int leftH =-1, rightH = -1;
+    if(node->left != NULL){
+        leftH = maxHeight(node->left);
+    }
+    if(node->right != NULL){
+        rightH = maxHeight(node->right);
+    }
+
+    if (leftH >= rightH){
+        return leftH + 1 ;
+    }
+    else if (leftH < rightH){
+        return rightH + 1 ;
+    }
+
+    
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +129,7 @@ BTNode *createBTNode(int item){
     return newNode;
 }
 
-
+ 
 //////////////////////////////////////////////////////////////////////////////////
 
 BTNode *createTree()
@@ -167,7 +186,7 @@ BTNode *createTree()
     return root;
 }
 
-void push( Stack *stk, BTNode *node){
+void push(Stack *stk, BTNode *node){
     StackNode *temp;
 
     temp = malloc(sizeof(StackNode));

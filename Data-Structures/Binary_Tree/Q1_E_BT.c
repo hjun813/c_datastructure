@@ -117,11 +117,30 @@ int identical(BTNode *tree1, BTNode *tree2)
 
 {
    /* add your code here */
+   // 다르면 0, 같으면 1 반환
+    if(tree1 == NULL && tree2 == NULL){ // 검사할 노드 둘다 NULL이면
+        return 1;
+    }
+    if(tree1 == NULL || tree2 == NULL){ // 검사할 노드 한쪽만 NULL이면
+        return 0;
+    }
+    if(tree1->item != tree2->item){ // 검사할 노드가 다르면
+        return 0;
+    }
+    // 검사할 노드는 같으니 왼쪽 오른쪽 자식 확인
+    if(identical(tree1->left, tree2->left) == 0){ // 왼쪽 자식이 다르다면
+        return 0;
+    }
+    if(identical(tree1->right, tree2->right) == 0){ // 오른쪽 자식이 다르다면
+        return 0;
+    }
+    return 1;
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////
 
-BTNode *createBTNode(int item){
+BTNode *createBTNode(int item){ // 포인터를 반환하는 함수 -> 새로운 item의 포인터반환
     BTNode *newNode = malloc(sizeof(BTNode));
     newNode->item = item;
     newNode->left = NULL;
@@ -144,7 +163,7 @@ BTNode *createTree()
 
     printf("Input an integer that you want to add to the binary tree. Any Alpha value will be treated as NULL.\n");
     printf("Enter an integer value for the root: ");
-    if(scanf("%d",&item) > 0)
+    if(scanf("%d",&item) > 0) // scanf가 리턴 값이 있어서 문자열 들어오면 0 반환이라 아래 else로 빠짐
     {
         root = createBTNode(item);
         push(&stk,root);

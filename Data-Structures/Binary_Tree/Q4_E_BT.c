@@ -104,6 +104,18 @@ int sumOfOddNodes(BTNode *node)
 
 {
     /* add your code here */
+    // 리턴을 노드를 루트로 하는 트리에서 
+    // 홀수 다더한값 반환
+    if(node == NULL){
+        return 0;
+    }
+    if(node->item % 2 == 1){ // 홀수면
+        return sumOfOddNodes(node->left) + sumOfOddNodes(node->right) + node->item;
+    }
+    else{
+        return sumOfOddNodes(node->left) + sumOfOddNodes(node->right);
+    }
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////

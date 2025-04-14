@@ -93,8 +93,23 @@ int main()
 
 void levelOrderTraversal(BSTNode* root)
 {
-	
     /* add your code here */
+	// 큐를 만들고
+	// 루트 넣고
+	// 반복
+	// 큐에서 빼고
+	// 좌 우 넣기
+	Queue *orderTraversal;
+	orderTraversal->head = NULL;
+	orderTraversal->tail = NULL;
+	
+	enqueue(orderTraversal->head, orderTraversal->tail, root->item);
+	while (orderTraversal)
+	{
+		
+	}
+	
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
