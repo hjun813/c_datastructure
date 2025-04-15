@@ -90,7 +90,37 @@ int main()
 
 void inOrderTraversal(BSTNode *root)
 {
-	 /* add your code here */
+	/* add your code here */
+	Stack *temp = (Stack*)malloc(sizeof(Stack)); // 순서를 알기 위해서
+
+	push(temp, root);
+	
+	while (temp->top != NULL)
+	{
+		BSTNode *cur = pop(temp);
+		BSTNode *forRoot = (BSTNode*)malloc(sizeof(BSTNode)); // 루트는 값만 넣어줄려고
+		forRoot->left = NULL;
+		forRoot->right = NULL;
+		
+		if(cur->left == NULL && cur->right == NULL){
+			printf("%d ", cur->item); // 자식 노드 없는건 출력만
+		}
+		else
+		{
+			// 오른쪽
+			if(cur->right != NULL){
+				push(temp, cur->right);
+			}
+			// 루트
+			forRoot->item = cur->item;
+			push(temp, forRoot);
+			//왼쪽
+			if(cur->left != NULL){
+				push(temp, cur->left);
+			}
+		}
+	}
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -87,11 +87,30 @@ int main()
 	return 0;
 }
 
-//////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 void postOrderIterativeS2(BSTNode *root)
 {
-	 /* add your code here */
+	/* add your code here */
+	Stack s = { NULL };        // 스택 초기화
+    BSTNode *curr = root;
+    Stack last = { NULL };
+
+    while (curr || !isEmpty(&s)) {
+        if (curr) {
+            push(&s, curr);
+            curr = curr->left;
+        } else {
+            BSTNode *top = peek(&s);
+            if (top->right && peek(&last) != top->right)
+                curr = top->right;
+            else {
+                printf("%d ", top->item);
+                push(&last, pop(&s));
+            }
+        }
+    }
+	
 }
 
 /* Given a binary search tree and a key, this function
@@ -99,6 +118,17 @@ void postOrderIterativeS2(BSTNode *root)
 BSTNode* removeNodeFromTree(BSTNode *root, int value)
 {
 	/* add your code here */
+	if(root == NULL){
+		return NULL;
+	}
+	if(root->item == value){
+		////////////////////////////
+		// 루트가 빼려는 값과 같을 때 //
+		////////////////////////////
+	}
+	else{
+		return root->item < value ? removeNodeFromTree(root->right, value) : removeNodeFromTree(root->left, value) 
+	}
 }
 ///////////////////////////////////////////////////////////////////////////////
 
