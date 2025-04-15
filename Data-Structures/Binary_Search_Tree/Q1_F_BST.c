@@ -93,20 +93,23 @@ int main()
 
 void levelOrderTraversal(BSTNode* root)
 {
-    /* add your code here */
-	// 큐를 만들고
-	// 루트 넣고
-	// 반복
-	// 큐에서 빼고
-	// 좌 우 넣기
-	Queue *orderTraversal;
+	if (root == NULL) return;
+
+	Queue *orderTraversal = (Queue*)malloc(sizeof(Queue));
 	orderTraversal->head = NULL;
 	orderTraversal->tail = NULL;
 	
-	enqueue(orderTraversal->head, orderTraversal->tail, root->item);
-	while (orderTraversal)
+	enqueue(&(orderTraversal->head), &(orderTraversal->tail), root);
+	while (orderTraversal->head != NULL)
 	{
-		
+		BSTNode *temp = dequeue(&(orderTraversal->head), &(orderTraversal->tail));
+		printf("%d ", temp->item);
+		if(temp->left != NULL){
+			enqueue(&(orderTraversal->head), &(orderTraversal->tail), temp->left);
+		}
+		if(temp->right != NULL){
+			enqueue(&(orderTraversal->head), &(orderTraversal->tail), temp->right);
+		}
 	}
 	
 
