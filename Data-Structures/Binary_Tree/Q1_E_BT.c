@@ -137,7 +137,15 @@ int identical(BTNode *tree1, BTNode *tree2)
     return 1;
 
 }
+/*
+int identical(BTNode *tree1, BTNode *tree2) {
+    if (tree1 == NULL && tree2 == NULL) return 1;
+    if (tree1 == NULL || tree2 == NULL) return 0;
+    if (tree1->item != tree2->item) return 0;
 
+    return identical(tree1->left, tree2->left) && identical(tree1->right, tree2->right);
+}
+*/
 /////////////////////////////////////////////////////////////////////////////////
 
 BTNode *createBTNode(int item){ // 포인터를 반환하는 함수 -> 새로운 item의 포인터반환

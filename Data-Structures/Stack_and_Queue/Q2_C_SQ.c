@@ -133,8 +133,7 @@ void removeEvenValues(Stack *s)
     ll2.size = 0;
 	/////////////////////////
 	int stackSize = s->ll.size;
-	// int check1= 0;
-
+	
 	for(int i = 0; i< stackSize; i++){
 		int check1 = pop(s); 
 		if(check1%2 == 1){
@@ -142,14 +141,7 @@ void removeEvenValues(Stack *s)
 		}//홀수면 temp에 보관
 	}
 	createStackFromLinkedList(&ll2, s);
-	// createStackFromLinkedList(&ll2, &temp);
-	// int tempSize = temp.ll.size;
-	// for(int j =0; j<tempSize; j++){
-	// 	check2 = pop(&temp);
-	// 	push(s, check2);
-	// }
-
-
+	
 }
 
 //////////////////////////////////////////////////////////////////////////////////

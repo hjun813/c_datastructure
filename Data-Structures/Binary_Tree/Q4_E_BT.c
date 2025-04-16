@@ -103,10 +103,11 @@ int main()
 int sumOfOddNodes(BTNode *node)
 
 {
-    /* add your code here */
-    // 리턴을 노드를 루트로 하는 트리에서 
-    // 홀수 다더한값 반환
-    if(node == NULL){
+    // node를 루트로 하는 트리에서 홀수 들의 합 반환 함수
+    // 왼쪽 노드 홀수합과 오른쪽 노드 홀수합을 더하고
+    // node가 홀수면 더해주자
+
+    if(node == NULL){ // 기저 조건
         return 0;
     }
     if(node->item % 2 == 1){ // 홀수면

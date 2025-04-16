@@ -123,6 +123,7 @@ void inOrderTraversal(BSTNode *root)
 
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 
 void insertBSTNode(BSTNode **node, int value){

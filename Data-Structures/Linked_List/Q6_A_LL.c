@@ -104,13 +104,7 @@ int moveMaxToFront(ListNode **ptrHead) //&(ll.head), 반환을 뭘 하길래 int
 		cur = cur->next;
 	}
 	
-	if(maxNode->next == NULL){
-		maxNodebef->next = NULL;
-	}
-	else{
-		maxNodebef->next = maxNode->next;
-	}
-
+	maxNodebef->next = maxNode->next;
 	maxNode->next = *ptrHead;
 	*ptrHead = maxNode;
 
